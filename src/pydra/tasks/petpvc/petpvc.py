@@ -26,8 +26,7 @@ from os import PathLike
 from attrs import define, field
 from pydra.engine.specs import ShellSpec, SpecInfo
 from pydra.engine.task import ShellCommandTask
-
-from .specs import FWHMSpec
+from pydra.tasks.petpvc.specs import FWHMSpec
 
 
 @define(kw_only=True)
@@ -82,7 +81,7 @@ class PETPVCSpec(ShellSpec):
         metadata={
             "help_string": "number of iterations for the iterative Yang method",
             "formatter": lambda num_iterations_for_iterative_yang, pvc_method: (
-                f"-n {str(num_iterations_for_iterative_yang)}" if "IY" in pvc_method else ""
+                f"-n {num_iterations_for_iterative_yang!s}" if "IY" in pvc_method else ""
             ),
         },
     )
@@ -92,7 +91,7 @@ class PETPVCSpec(ShellSpec):
         metadata={
             "help_string": "number of iterations for deconvolution (RL and VC methods)",
             "formatter": lambda num_iterations_for_deconvolution, pvc_method: (
-                f"-k {str(num_iterations_for_deconvolution)}" if any(s in pvc_method for s in ["RL", "VC"]) else ""
+                f"-k {num_iterations_for_deconvolution!s}" if any(s in pvc_method for s in ["RL", "VC"]) else ""
             ),
         },
     )
