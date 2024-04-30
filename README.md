@@ -2,12 +2,11 @@
 
 [![PyPI - Version][pypi-version]][pypi-project]
 [![PyPI - Python Version][pypi-pyversions]][pypi-project]
-[![PyPI - Downloads][pypi-downloads]][pypi-project]
 ![][status-test]
 
 ----
 
-Pydra tasks for PETPVC.
+Pydra tasks for PETPVC designed for Clinica.
 
 [Pydra][pydra] is a dataflow engine which provides
 a set of lightweight abstractions for DAG
@@ -19,7 +18,7 @@ in positron emission tomography (PET).
 ## Installation
 
 ```console
-pip install pydra-petpvc
+pip install clinica-pydra-petpvc
 ```
 
 A separate installation of PETPVC is required to use this package.
@@ -48,7 +47,7 @@ hatch run test
 To fix linting issues:
 
 ```console
-hatch run lint:fix
+hatch fmt
 ```
 
 ## Licensing
@@ -65,12 +64,10 @@ This project is distributed under the terms of the [Apache License, Version 2.0]
 
 [pydra]: https://pydra.readthedocs.io/
 
-[pypi-downloads]: https://static.pepy.tech/badge/pydra-petpvc
+[pypi-project]: https://pypi.org/project/clinica-pydra-petpvc
 
-[pypi-project]: https://pypi.org/project/pydra-petpvc
+[pypi-pyversions]: https://img.shields.io/pypi/pyversions/clinica-pydra-petpvc.svg
 
-[pypi-pyversions]: https://img.shields.io/pypi/pyversions/pydra-petpvc.svg
+[pypi-version]: https://img.shields.io/pypi/v/clinica-pydra-petpvc.svg
 
-[pypi-version]: https://img.shields.io/pypi/v/pydra-petpvc.svg
-
-[status-test]: https://github.com/aramis-lab/pydra-petpvc/actions/workflows/test.yaml/badge.svg
+[status-test]: https://github.com/aramis-lab/clinica-pydra-petpvc/actions/workflows/test.yaml/badge.svg
