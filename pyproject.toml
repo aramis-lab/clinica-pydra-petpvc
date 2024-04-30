@@ -5,13 +5,13 @@ build-backend = "hatchling.build"
 [project]
 name = "pydra-petpvc"
 version = "0.0.4"
-description = 'Pydra tasks for PETPVC'
+description = 'Pydra tasks for PETPVC designed for Clinica'
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 license = "Apache-2.0"
 keywords = ["pydra", "pet", "petpvc", "pvc"]
 authors = [
-  { name = "Ghislain Vaillant", email = "ghislain.vaillant@icm-institute.org" },
+  { name = "Ghislain Vaillant", email = "ghislain.vaillant@inria.fr" },
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -19,11 +19,11 @@ classifiers = [
   "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Topic :: Scientific/Engineering",
   "Topic :: Software Development :: Libraries",
 ]
@@ -33,9 +33,21 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/ghisvail/pydra-petpvc#readme"
-Issues = "https://github.com/ghisvail/pydra-petpvc/issues"
-Source = "https://github.com/ghisvail/pydra-petpvc"
+Documentation = "https://github.com/ghisvail/clinica-pydra-petpvc#readme"
+Issues = "https://github.com/ghisvail/clinica-pydra-petpvc/issues"
+Source = "https://github.com/ghisvail/clinica-pydra-petpvc"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src/pydra/tasks/petpvc"]
+sources = ["src"]
+
+[tool.hatch.envs.default]
+dependencies = ["pytest"]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args}"
+
+[[tool.hatch.envs.default.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -43,10 +55,8 @@ addopts = [
   "--doctest-modules",
   "--doctest-continue-on-failure",
 ]
+pythonpath = ["src"]
+testpaths = ["src"]
 
-[tool.black]
-target-version = ["py37"]
-line-length = 120
-
-[tool.isort]
-profile = "black"
+[tool.ruff.lint]
+ignore = ["FA"]
